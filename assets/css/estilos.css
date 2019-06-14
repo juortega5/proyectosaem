@@ -1,0 +1,14 @@
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+.efecto{  
+	-webkit-transition-duration: 0.1s;
+	box-shadow:0px 0 0 #31708f  inset;
+}
+.efecto:hover{
+    box-shadow:100px 0 0 #31708f inset;
+}

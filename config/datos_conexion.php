@@ -1,0 +1,9 @@
+<?php 
+	return
+	[
+		'servidor'=>'localhost',
+		'usuario'=>'root',
+		'clave'=>'',
+		'bd'=>'bd_saem',
+	];
+?>

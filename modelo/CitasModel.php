@@ -30,9 +30,9 @@
 		/**
 		* 
 		*/
-		public function getSedes($id_tipo_cita=null,$rol=null)
+		public function getSedes($id_tipo_cita=null)
 		{
-			if ($rol=='1') 
+			if ($_SESSION['rol']=='1') 
 			{
 				$infoSedes = $this->obj_Query->select("id_sede,nombre_sede","1",[],"prm_sedes");
 			}
@@ -43,4 +43,37 @@
 			}			
 			return $infoSedes;
 		}
+		/**
+		* 
+		*/
+		public function validarAgenda($fecha)
+		{
+			$arrayDatos = ['fecha' => "%".$fecha."%"];
+			$agendaExistente = $this->obj_Query->select("COUNT(id_agenda_medica) AS CONTEO","horario like :fecha",$arrayDatos);
+			return $agendaExistente[0]->CONTEO;
+		}
+		/**
+		* 
+		*/
+		public function insertAgenda($id_sede,$fecha)
+		{
+			switch ($_SESSION['rol']) 
+			{
+				case '1':
+					$id_tipo_cita='1';
+				break;
+				
+				case '3':
+					$id_tipo_cita='2';
+				break;
+			}
+			$horarios = ['08:00:00','08:30:00','09:00:00','09:30:00','10:00:00','10:30:00','11:00:00',
+						'11:30:00','02:00:00','02:30:00','04:00:00','04:30:00','05:00:00','05:30:00'];
+			for ($i=0; $i <14 ; $i++) 
+			{ 
+				$arrayDatos = ['cedula_paciente'=>'0','id_sede'=>$id_sede,'id_tipo_cita' => $id_tipo_cita,'cedula_medico'=>$_SESSION['usuario'],'horario'=>$fecha." ".$horarios[$i]];
+				$this->obj_Query->insertar("cedula_paciente,id_sede,id_tipo_cita,cedula_medico,horario",":cedula_paciente,:id_sede,:id_tipo_cita,:cedula_medico,:horario",$arrayDatos);
+			}		
+		}
+
 	}

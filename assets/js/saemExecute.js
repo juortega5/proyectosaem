@@ -12,9 +12,17 @@ var crearAgenda = function() {
 var guardaAgenda = function() {
 	sendForm('crearAgenda','rta','rutas/web.php');
 };
+var listarAgendaMedica = function() {
+	$("#bienvenida").remove();
+	loadView('listarAgenda','rta','rutas/web.php');
+};
+var cargarListaAgenda = function() {
+	var fecha = $("#fecha").val();
+	loadView('verAgenda','tablaAgendaMedica','rutas/web.php',fecha);
+};
 /*---------Paciente-------------*/
 var agendarCita = function() {
-	$("#bienvenida").remove();
+	$("#fecha").remove();
 	loadView('cargarSolicitud','rta','rutas/web.php');
 };
 var comboSede = function(id) {

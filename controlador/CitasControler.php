@@ -14,21 +14,6 @@
 		/**
 		* 
 		*/
-		public function crearSolicitud ()
-		{
-			$sedes = $this->obj_CitasModel->getSedes(0,1);
-			return include '../vistas/citas/form_crear.php';
-		}
-		/**
-		* 
-		*/
-		public  function guardarAgenda()
-		{
-			echo $_POST['sede']."".$_POST['fecha'];
-		}
-		/**
-		* 
-		*/
 		public function cargarSolicitud ()
 		{
 			$disponibilidad = $this->obj_CitasModel->citasDisponibles();

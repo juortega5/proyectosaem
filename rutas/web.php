@@ -4,10 +4,12 @@ $rutas=
 [
 	'validarUsuario'=>['archivo'=>'LoguinControler.php','controlador'=>'LoguinControler'],
 	'cargarSolicitud'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
-	'crearSolicitud'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'comboSedes'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'guardarSolicitud'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
-	'guardarAgenda'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
+	'guardarAgenda'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],
+	'crearSolicitud'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],
+	'listarAgenda'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],
+	'verAgenda'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],
 ];
 $metodo = $_POST['metodo'];
 $controlador= $rutas[$metodo]['controlador'];

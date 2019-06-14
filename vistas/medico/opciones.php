@@ -10,7 +10,7 @@
           <a onclick="crearAgenda();" class="navbar-brand text-light" href="#">Crear Agenda</a>
         </div>   
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
-          <a  class="navbar-brand text-light" href="#">Agenda</a>
+          <a onclick="listarAgendaMedica();" class="navbar-brand text-light" href="#">Agenda</a>
         </div>  
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
           <a  class="navbar-brand text-light" href="#">Actualizar información</a>

@@ -9,12 +9,11 @@
         </tr>
       </thead>
       <tbody>
-         <?php foreach($datosParticipantes as $columna): ?>
+         <?php foreach($datosAgenda as $columna): ?>
          <tr align="center">
-          <td><?php echo $columna->NOMBRE; ?></td>
-          <td><?php echo $columna->categoria; ?></td>
-          <td><?php echo $columna->JERSEY; ?></td>
-          <td><a href="#"  class="btn btn-outline-danger">x</a></td>
+          <td><?php echo $columna->nombre; ?></td>
+          <td><?php echo $columna->nombre_sede; ?></td>
+          <td><?php echo $columna->horario; ?></td>
         </tr>
         <?php endforeach; ?>
       </tbody>

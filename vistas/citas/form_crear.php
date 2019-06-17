@@ -2,12 +2,11 @@
    <div class="col-md-3"></div>
    <div class="col-md-6">
       <div class="card">
-        <div class="card-header text-light bg-dark">
+        <div align="center" class="card-header text-light bg-dark">
           Crear Agenda Medica
         </div>
         <div class="card-body">
           <form id="crearAgenda" method="post">
-            <div id="comboSede"></div>
             <div class="form-group">
               <label for="sede">Sede</label>
               <select class="form-control" name="sede" id="sede">

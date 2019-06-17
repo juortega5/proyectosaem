@@ -2,7 +2,7 @@
    <div class="col-md-3"></div>
    <div class="col-md-6">
       <div class="card">
-        <div class="card-header text-light bg-dark">
+        <div align="center" class="card-header text-light bg-dark">
           Solicitar cita medica
         </div>
         <div class="card-body">

@@ -2,7 +2,7 @@
    <div class="col-md-2"></div>
    <div class="col-md-12">
       <div class="card">
-        <div class="card-header text-light bg-dark">
+        <div  align="center"class="card-header text-light bg-dark">
           Consultar agenda medica
         </div>
         <div class="card-body">

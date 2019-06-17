@@ -20,6 +20,20 @@ var cargarListaAgenda = function() {
 	var fecha = $("#fecha").val();
 	loadView('verAgenda','tablaAgendaMedica','rutas/web.php',fecha);
 };
+var actualizarInfo = function() {
+	$("#bienvenida").remove();
+	loadView('actualizarDatos','rta','rutas/web.php');
+};
+var editDatos = function() {
+	sendForm('actualizaDatos','rta','rutas/web.php');
+};
+var cambiaClave = function() {
+	$("#bienvenida").remove();
+	loadView('cambiaClave','rta','rutas/web.php');
+};
+var setCambiaClave = function() {
+	sendForm('cambiarClave','rta','rutas/web.php');
+};
 /*---------Paciente-------------*/
 var agendarCita = function() {
 	$("#fecha").remove();

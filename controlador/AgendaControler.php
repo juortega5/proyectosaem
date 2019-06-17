@@ -53,7 +53,21 @@
 		*/
 		public function verAgenda ()
 		{
+			$existenciaAgenda=$this->obj_CitasModel->validarAgenda($_POST['buscar']);
+			if($existenciaAgenda==0)
+			{
+				$fecha_actual = strtotime(date("Y-m-d"));
+				$fecha_entrada = strtotime($_POST['buscar']);
+				if($fecha_actual > $fecha_entrada)
+				{
+					return include '../vistas/medico/alertas/errorAgendaDesactualizada.php';
+				}
+				else
+				{
+					return include '../vistas/medico/alertas/errorAgendaInexistente.php';
+				}	
+			}
+			$datosAgenda = $this->obj_CitasModel->getAgenda($_POST['buscar']);
 			return include '../vistas/medico/agenda.php';
-			//SELECT IF(tb_agenda_medica.cedula_paciente=0,'DISPONIBLE',CONCAT(tb_user.primer_nombre," ",tb_user.segundo_nombre)) as nombre,prm_sedes.nombre_sede,tb_agenda_medica.horario FROM tb_agenda_medica INNER JOIN tb_user ON tb_agenda_medica.cedula_paciente = tb_user.cedula INNER JOIN prm_sedes on tb_agenda_medica.id_sede = prm_sedes.id_sede WHERE tb_agenda_medica.horario LIKE '%2019-06-14%'
 		}
 	}

@@ -75,5 +75,14 @@
 				$this->obj_Query->insertar("cedula_paciente,id_sede,id_tipo_cita,cedula_medico,horario",":cedula_paciente,:id_sede,:id_tipo_cita,:cedula_medico,:horario",$arrayDatos);
 			}		
 		}
+		/**
+		* 
+		*/
+		public function getAgenda($fecha)
+		{
+			$arrayDatos = ['fecha' => "%".$fecha."%"];
+			$agendaDisponible = $this->obj_Query->select("IF(COUNT(tb_agenda_medica.cedula_paciente)=0,'Sin pacientes asignados.',CONCAT(tb_user.primer_nombre,' ',tb_user.segundo_nombre)) as nombre,prm_sedes.nombre_sede,tb_agenda_medica.horario","tb_agenda_medica.horario like :fecha",$arrayDatos,"tb_agenda_medica INNER JOIN tb_user ON tb_agenda_medica.cedula_paciente = tb_user.cedula INNER JOIN prm_sedes on tb_agenda_medica.id_sede = prm_sedes.id_sede");
+			return $agendaDisponible;
+		}
 
 	}

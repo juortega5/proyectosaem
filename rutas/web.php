@@ -3,6 +3,10 @@ session_start();
 $rutas=
 [
 	'validarUsuario'=>['archivo'=>'LoguinControler.php','controlador'=>'LoguinControler'],
+	'actualizarDatos'=>['archivo'=>'LoguinControler.php','controlador'=>'LoguinControler'],
+	'setActualizarDatos'=>['archivo'=>'LoguinControler.php','controlador'=>'LoguinControler'],
+	'cambiaClave'=>['archivo'=>'LoguinControler.php','controlador'=>'LoguinControler'],
+	'guardarClave'=>['archivo'=>'LoguinControler.php','controlador'=>'LoguinControler'],
 	'cargarSolicitud'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'comboSedes'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'guardarSolicitud'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],

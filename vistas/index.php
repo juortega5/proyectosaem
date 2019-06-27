@@ -39,11 +39,12 @@
           </div>
           <div class="form-group">
             <label for="contraseña">Contraseña</label>
-            <input type="password" class="form-control" name="password" clave="clave" id="contraseña" placeholder="Contraseña">
+            <input type="password" class="form-control" name="password"  id="contraseña" placeholder="Contraseña">
           </div>
           <input type="hidden" name="metodo" value="validarUsuario">
           <div align="center">
             <button type="button" id="iniciarSesion" class="btn btn-success">Iniciar</button>
+             <button type="button" onclick="cargarFormregister();" class="btn btn-dark">Registrar</button>
           </div>
         </form>
       </div>

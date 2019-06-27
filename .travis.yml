@@ -71,4 +71,4 @@ script:
  - phpunit
 # After a build, send email notification with the build results
 notifications:
- email: juortega5@poligran.edu.co
+ email: juortega5@poligran

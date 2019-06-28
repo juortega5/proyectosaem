@@ -9,11 +9,11 @@
           <form id="cambiarClave" method="post">
             <div class="form-group">
               <label for="clave">Clave </label>
-              <input name="clave" type="password" class="form-control">
+              <input id="clave" name="clave" type="password" class="form-control">
             </div>
             <div class="form-group">
               <label for="nueva_clave">Clave nueva</label>
-              <input name="nueva_clave" type="password" class="form-control">
+              <input id="nueva_clave" name="nueva_clave" type="password" class="form-control">
             </div>
             <input type="hidden" name="metodo" value="guardarClave">
             <div align="center">

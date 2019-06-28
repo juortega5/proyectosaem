@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
               <label for="fecha">Fecha</label>
-              <input name="fecha" type="date" class="form-control">
+              <input id="fecha" name="fecha" type="date" class="form-control">
             </div>
             <input type="hidden" name="metodo" value="guardarAgenda">
             <div align="center">

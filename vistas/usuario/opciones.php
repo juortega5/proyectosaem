@@ -13,13 +13,13 @@
           <a  class="navbar-brand text-light" href="#">Agenda</a>
         </div>  
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
-          <a  class="navbar-brand text-light" href="#">Actualizar información</a>
+          <a  onclick="actualizarInfo();" class="navbar-brand text-light" href="#">Actualizar datos</a>
         </div> 
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
-          <a  class="navbar-brand text-light" href="#">Cambiar clave</a>
+          <a  onclick="cambiaClave();" class="navbar-brand text-light" href="#">Cambiar clave</a>
         </div> 
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
-          <a  class="navbar-brand text-light" href="#">Salir</a>
+           <a onclick="window.location.reload();" class="navbar-brand text-light" href="#">Salir</a>
         </div> 
       </div>
     </ul>

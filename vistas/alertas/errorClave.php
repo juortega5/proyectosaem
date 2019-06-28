@@ -1,4 +1,3 @@
-<hr>
 <div class="row">
 <div class="col-3"></div>
 <div align="center" class="col-6 alert alert-danger">

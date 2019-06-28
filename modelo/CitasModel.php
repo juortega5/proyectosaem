@@ -16,7 +16,7 @@
 		*/
 		public function citasDisponibles()
 		{
-			$citasDisponibles = $this->obj_Query->select("COUNT(id_agenda_medica) AS CONTEO","cedula_paciente=0",[]);
+			$citasDisponibles = $this->obj_Query->select("COUNT(id_agenda_medica) AS CONTEO","cedula_paciente=0 AND DATEDIFF(CURDATE(),horario)<=0",[]);
 			return $citasDisponibles[0]->CONTEO;
 		}
 		/**
@@ -24,7 +24,7 @@
 		*/
 		public function getTipocitas()
 		{
-			$infoCitas = $this->obj_Query->select("tb_agenda_medica.id_tipo_cita, prm_tipo_cita.nompre_tipo_cita","1",[],"tb_agenda_medica INNER JOIN prm_tipo_cita ON tb_agenda_medica.id_tipo_cita = prm_tipo_cita.id_tipo_cita");
+			$infoCitas = $this->obj_Query->select("DISTINCT tb_agenda_medica.id_tipo_cita, prm_tipo_cita.nompre_tipo_cita","tb_agenda_medica.cedula_paciente=0 AND DATEDIFF(CURDATE(),tb_agenda_medica.horario)<=0",[],"tb_agenda_medica INNER JOIN prm_tipo_cita ON tb_agenda_medica.id_tipo_cita = prm_tipo_cita.id_tipo_cita");
 			return $infoCitas;
 		}
 		/**
@@ -39,9 +39,27 @@
 			else
 			{
 				$arrayDatos = ['id_tipo_cita' => $id_tipo_cita];
-				$infoSedes = $this->obj_Query->select("tb_agenda_medica.id_sede, prm_sedes.nombre_sede","tb_agenda_medica.id_tipo_cita:id_tipo_cita",$arrayDatos,"tb_agenda_medica INNER JOIN prm_tipo_cita ON tb_agenda_medica.id_tipo_cita = prm_tipo_cita.id_tipo_cita INNER JOIN prm_sedes ON tb_agenda_medica.id_sede = prm_sedes.id_sede");
+				$infoSedes = $this->obj_Query->select("DISTINCT tb_agenda_medica.id_sede, prm_sedes.nombre_sede","tb_agenda_medica.id_tipo_cita=:id_tipo_cita AND tb_agenda_medica.cedula_paciente=0 AND DATEDIFF(CURDATE(),tb_agenda_medica.horario)<=0",$arrayDatos,"tb_agenda_medica INNER JOIN prm_tipo_cita ON tb_agenda_medica.id_tipo_cita = prm_tipo_cita.id_tipo_cita INNER JOIN prm_sedes ON tb_agenda_medica.id_sede = prm_sedes.id_sede");
 			}			
 			return $infoSedes;
+		}
+		/**
+		* 
+		*/
+		public function getFechas($id_tipo_cita,$id_sede)
+		{
+			$arrayDatos = ['id_tipo_cita' => $id_tipo_cita,'id_sede'=>$id_sede];
+			$infiFechas = $this->obj_Query->select("DISTINCT SUBSTRING(tb_agenda_medica.horario,1,10) AS horario","tb_agenda_medica.id_tipo_cita=:id_tipo_cita AND tb_agenda_medica.id_sede=:id_sede AND tb_agenda_medica.cedula_paciente=0 AND DATEDIFF(CURDATE(),tb_agenda_medica.horario)<=0",$arrayDatos,"tb_agenda_medica INNER JOIN prm_tipo_cita ON tb_agenda_medica.id_tipo_cita = prm_tipo_cita.id_tipo_cita");
+			return $infiFechas;
+		}
+		/**
+		* 
+		*/
+		public function getHorarios($id_tipo_cita,$id_sede,$fecha)
+		{
+			$arrayDatos = ['id_tipo_cita' => $id_tipo_cita,'id_sede'=>$id_sede,'fecha'=>"%".$fecha."%"];
+			$infoHorarios = $this->obj_Query->select("DISTINCT SUBSTRING(tb_agenda_medica.horario,12,10) AS horario","tb_agenda_medica.id_tipo_cita=:id_tipo_cita AND tb_agenda_medica.id_sede=:id_sede AND tb_agenda_medica.cedula_paciente=0 AND DATEDIFF(CURDATE(),tb_agenda_medica.horario)<=0 AND  tb_agenda_medica.horario LIKE :fecha",$arrayDatos,"tb_agenda_medica INNER JOIN prm_tipo_cita ON tb_agenda_medica.id_tipo_cita = prm_tipo_cita.id_tipo_cita");
+			return $infoHorarios;
 		}
 		/**
 		* 
@@ -81,8 +99,18 @@
 		public function getAgenda($fecha)
 		{
 			$arrayDatos = ['fecha' => "%".$fecha."%"];
-			$agendaDisponible = $this->obj_Query->select("IF(COUNT(tb_agenda_medica.cedula_paciente)=0,'Sin pacientes asignados.',CONCAT(tb_user.primer_nombre,' ',tb_user.segundo_nombre)) as nombre,prm_sedes.nombre_sede,tb_agenda_medica.horario","tb_agenda_medica.horario like :fecha",$arrayDatos,"tb_agenda_medica INNER JOIN tb_user ON tb_agenda_medica.cedula_paciente = tb_user.cedula INNER JOIN prm_sedes on tb_agenda_medica.id_sede = prm_sedes.id_sede");
-			return $agendaDisponible;
+			$agendaVacia = $this->obj_Query->select("COUNT(cedula_paciente) nombre","horario LIKE :fecha AND cedula_paciente=0",$arrayDatos);
+			if ($agendaVacia[0]->nombre==14)
+			{
+				$agendaDisponible = 0;
+				return $agendaDisponible;
+			}
+			else
+			{
+				$agendaDisponible = $this->obj_Query->select("CONCAT(tb_user.primer_nombre,' ',tb_user.segundo_nombre) as nombre,prm_sedes.nombre_sede,tb_agenda_medica.horario","tb_agenda_medica.horario like :fecha",$arrayDatos,"tb_agenda_medica INNER JOIN tb_user ON tb_agenda_medica.cedula_paciente = tb_user.cedula INNER JOIN prm_sedes on tb_agenda_medica.id_sede = prm_sedes.id_sede");
+				return $agendaDisponible;
+			}
+			
 		}
 
 	}

@@ -10,7 +10,7 @@
           <a onclick="agendarCita();" class="navbar-brand text-light" href="#">Agendar Cita</a>
         </div>   
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
-          <a  class="navbar-brand text-light" href="#">Agenda</a>
+          <a onclick="listarAgendaPaciente();" class="navbar-brand text-light" href="#">Agenda</a>
         </div>  
         <div class="col-md-12 bg-dark  efecto btn-outline-secondary">
           <a  onclick="actualizarInfo();" class="navbar-brand text-light" href="#">Actualizar datos</a>

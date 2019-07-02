@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label for="horario">Fechas</label>
+  <label for="horario">Horarios</label>
   <select onchange="comboFin();" class="form-control" name="horario" id="horario">
     <option selected="selected">Seleccione un horario</option>
     <?php foreach($horarios as $columna): ?>

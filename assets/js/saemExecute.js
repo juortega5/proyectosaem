@@ -69,3 +69,10 @@ var comboFin = function() {
 var guardarCita = function() {
 	sendForm('solicitudCita','rta','rutas/web.php');
 };
+var listarAgendaPaciente = function() {
+	$("#bienvenida").remove();
+	loadView('cargarAgenda','rta','rutas/web.php');
+};
+var cancelarCita = function(id) {
+	loadView('cancelarCita','rta','rutas/web.php',id);
+};

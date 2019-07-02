@@ -16,6 +16,8 @@ $rutas=
 	'comboFinal'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'guardarCita'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'guardarSolicitud'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
+	'cargarAgenda'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
+	'cancelarCita'=>['archivo'=>'CitasControler.php','controlador'=>'CitasControler'],
 	'guardarAgenda'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],
 	'crearSolicitud'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],
 	'listarAgenda'=>['archivo'=>'AgendaControler.php','controlador'=>'AgendaControler'],

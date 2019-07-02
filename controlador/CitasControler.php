@@ -73,7 +73,36 @@
 		*/
 		public  function guardarCita()
 		{
-			$datosUpdate = [$_SESSION['tipocita'],$_SESSION['sede'],$_SESSION['fecha'],$_SESSION['horario'])];
+			$datosUpdate = [$_SESSION['tipocita'],$_SESSION['sede'],$_SESSION['fecha'].' '.$_SESSION['horario']];
+			$this->obj_CitasModel->setAgenda($datosUpdate);
+			return include '../vistas/usuario/alertas/exitoCrearCita.php';
+		}
+		/**
+		* 
+		*/
+		public  function cargarAgenda()
+		{
+			$disponibilidad = $this->obj_CitasModel->citasDisponibles();
+			if ($disponibilidad==0)
+			{
+				$agenda = $this->obj_CitasModel->getAgendaPaciente();
+				$fecha_actual = strtotime(date("Y-m-d").'24:00:00');
+
+				return include '../vistas/usuario/agenda.php';
+			}
+			else
+			{	
+				return include '../vistas/usuario/alertas/errorSolicitarCita.php';
+			}
+		}
+		/**
+		* 
+		*/
+		public  function cancelarCita()
+		{
+			$datoslimpios = Sanitizar::sanitizaXSS(['buscar'],['numero']);
+			$this->obj_CitasModel->cancelAgenda($datoslimpios[0]);
+			return include '../vistas/usuario/alertas/exitoCancelarCita.php';
 		}
 		
 	}

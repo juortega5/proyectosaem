@@ -1,6 +1,7 @@
 <?php 
-	include '../core/Query.php';
-
+	namespace modelo;
+	
+	use core\Query;
 	class CitasModel extends Query
 	{
 		private $obj_Query;
@@ -27,6 +28,16 @@
 			{
 				return 0;
 			}
+		}
+		/**
+		* 
+		*/
+		public function agendaDisponible()
+		{
+			$arrayDatos = ['cedula_paciente' => $_SESSION['usuario']];
+			$citasUsuario = $this->obj_Query->select("COUNT(id_agenda_medica) AS CONTEO","cedula_paciente=:cedula_paciente AND DATEDIFF(CURDATE(),horario)<=0",$arrayDatos);
+			return $citasUsuario[0]->CONTEO;
+			
 		}
 		/**
 		* 

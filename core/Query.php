@@ -1,5 +1,7 @@
 <?php
-include '../core/conexion.php';
+namespace core;
+use PDO;
+
 class Query extends Conexion
 {
 	/*Declaración de atributos.*/

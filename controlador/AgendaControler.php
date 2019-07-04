@@ -1,7 +1,7 @@
 <?php 
-	include '../modelo/CitasModel.php';
-	include '../core/Sanitizar.php';
-
+	namespace controlador;
+	use modelo\CitasModel;
+	use core\Sanitizar;
 	class AgendaControler extends CitasModel
 	{
 		private $obj_CitasModel;

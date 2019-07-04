@@ -1,0 +1,18 @@
+{
+    "name": "julio-cesar/saem",
+    "description": "saem proyect.",
+    "authors": [
+        {
+            "name": "juortega5",
+            "email": "juortega5@poligran.edu.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "controlador\\": "controlador/",
+            "modelo\\": "modelo/",
+            "core\\": "core/"
+        }
+    },
+    "require": { }
+}

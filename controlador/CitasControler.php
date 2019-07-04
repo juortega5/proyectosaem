@@ -1,7 +1,7 @@
 <?php 
-	include '../modelo/CitasModel.php';
-	include '../core/Sanitizar.php';
-
+	namespace controlador; 
+	use modelo\CitasModel;
+	use core\Sanitizar;
 	class CitasControler extends CitasModel
 	{
 		private $obj_CitasModel;
@@ -82,12 +82,11 @@
 		*/
 		public  function cargarAgenda()
 		{
-			$disponibilidad = $this->obj_CitasModel->citasDisponibles();
-			if ($disponibilidad==0)
+			$disponibilidad = $this->obj_CitasModel->agendaDisponible();
+			if ($disponibilidad>0)
 			{
 				$agenda = $this->obj_CitasModel->getAgendaPaciente();
 				$fecha_actual = strtotime(date("Y-m-d").'24:00:00');
-
 				return include '../vistas/usuario/agenda.php';
 			}
 			else

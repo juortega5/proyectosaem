@@ -1,5 +1,7 @@
 <?php 
-	include '../core/Query.php';
+	namespace modelo;
+	
+	use core\Query;
 
 	class LoguinModel extends Query
 	{

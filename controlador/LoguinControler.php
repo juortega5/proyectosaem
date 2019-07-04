@@ -1,7 +1,7 @@
 <?php 
-	include '../modelo/LoguinModel.php';
-	include '../core/Sanitizar.php';
-
+	namespace controlador;
+	use modelo\LoguinModel;
+	use core\Sanitizar;
 	class LoguinControler extends LoguinModel
 	{
 		private $obj_LoguinModel;

@@ -11,8 +11,13 @@
         "psr-4": {
             "controlador\\": "controlador/",
             "modelo\\": "modelo/",
-            "core\\": "core/"
+            "core\\": "core/",
+            "tests\\": "tests/"
         }
     },
-    "require": { }
+    "require": { },
+    "require-dev": {
+    
+        "phpunit/phpunit": "5.7"
+        }
 }
